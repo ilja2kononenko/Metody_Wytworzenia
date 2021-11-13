@@ -6,11 +6,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PrimaryController implements Initializable {
+public class PrimaryController extends Parent implements Initializable {
 
     @FXML
     private Label ItemNameLabel;
@@ -82,5 +88,20 @@ public class PrimaryController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void prepareDeliveryStage() throws IOException {
+//        stage = new Stage(StageStyle.DECORATED);
+//        Parent root = FXMLLoader.load(Main.class.getResource("delivery.fxml"));
+//        stage.setScene(new Scene(root, 800, 550));
+//        stage.setTitle("Delivery");
+//        stage.setResizable(false);//block windows resize
+//        stage.show();
+        Main.setRoot("delivery");
+    }
+
+    public void prepareAccountStage() throws IOException{
+
     }
 }

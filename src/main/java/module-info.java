@@ -1,4 +1,4 @@
-module com.example.demo {
+module com.metody_wytworzenia {
     requires javafx.controls;
     requires javafx.fxml;
 
