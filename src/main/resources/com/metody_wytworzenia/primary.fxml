@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" styleClass="pane" stylesheets="@style.css" vgap="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"  fx:controller="com.metody_wytworzenia.ItemListController">
+<GridPane alignment="center" hgap="10" styleClass="pane" stylesheets="@style.css" vgap="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"  fx:controller="com.metody_wytworzenia.Controllers.PrimaryController">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>

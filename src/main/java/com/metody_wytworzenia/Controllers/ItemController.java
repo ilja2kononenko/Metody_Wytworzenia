@@ -1,4 +1,4 @@
-package com.metody_wytworzenia;
+package com.metody_wytworzenia.Controllers;
 
 import com.metody_wytworzenia.Models.Item;
 import javafx.fxml.FXML;
@@ -22,5 +22,5 @@ public class ItemController {
         priceLabel.setText(Double.toString(item.getPrice()));
         //Image imageFromDirectory = new Image(getClass().getResourceAsStream(item.getImageSource()));
         //image.setImage(imageFromDirectory);
-      }
+    }
 }

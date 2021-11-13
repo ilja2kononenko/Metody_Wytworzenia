@@ -1,5 +1,6 @@
-package com.metody_wytworzenia;
+package com.metody_wytworzenia.Controllers;
 
+import com.metody_wytworzenia.Main;
 import com.metody_wytworzenia.Models.Item;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ItemListController implements Initializable {
+public class PrimaryController implements Initializable {
 
     @FXML
     private Label ItemNameLabel;
@@ -39,7 +40,7 @@ public class ItemListController implements Initializable {
 
     private List<Item> items = new ArrayList<>();
 
-    public ItemListController() {
+    public PrimaryController() {
     }
 
     private List<Item> getData() {
@@ -63,7 +64,7 @@ public class ItemListController implements Initializable {
         try {
             for (Item item : items) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("item.fxml"));
+                fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
 
                 AnchorPane anchorPane = fxmlLoader.load();
 
