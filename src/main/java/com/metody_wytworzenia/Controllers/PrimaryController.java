@@ -96,7 +96,7 @@ public class PrimaryController extends Parent implements Initializable {
     @FXML
     public void prepareCartStage() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
-        Parent root = FXMLLoader.load(Main.class.getResource("delivery.fxml"));
+        Parent root = FXMLLoader.load(Main.class.getResource("cart.fxml"));
         stage.setScene(new Scene(root, 800, 550));
         stage.setTitle("Delivery");
         stage.setResizable(false);//block windows resize

@@ -39,8 +39,8 @@ public class ItemController {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("item_details.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root, 800, 550));
-        ItemDetailsController controller2 = loader.getController();
-        controller2.setItemDetails(item);
+        ItemDetailsController controller = loader.getController();
+        controller.setItemDetails(item);
         stage.setTitle("Item information");
         stage.setResizable(false);//block windows resize
         stage.show();

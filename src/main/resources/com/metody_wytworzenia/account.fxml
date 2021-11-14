@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="550.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metody_wytworzenia.Controllers.AccountController">
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metody_wytworzenia.Controllers.AccountController">
     <children>
-        <Label text="Primary View" />
-        <Button fx:id="primaryButton" text="Switch to Secondary View" />
+      <AnchorPane prefHeight="436.0" prefWidth="760.0">
+         <children>
+            <Label fx:id="userEmail" layoutY="46.0" prefHeight="17.0" prefWidth="762.0" text="Email" />
+         </children>
+      </AnchorPane>
+        <ButtonBar prefHeight="44.0" prefWidth="760.0">
+            <buttons>
+                <Button prefHeight="25.0" prefWidth="493.0" text="Login" ButtonBar.buttonData="LEFT" />
+                <Button text="Register" ButtonBar.buttonData="RIGHT" />
+            </buttons>
+        </ButtonBar>
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
