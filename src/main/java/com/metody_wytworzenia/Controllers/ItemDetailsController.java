@@ -29,18 +29,19 @@ public class ItemDetailsController implements Initializable {
     @FXML
     private Button primaryButton;
 
-    private Item item;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
     public void setItemDetails(Item item){
-        this.item = item;
         itemName.setText(item.getName());
         itemPrice.setText(Double.toString(item.getPrice()));
         itemDescription.setWrapText(true);
         itemDescription.setText(item.getDescription());
+    }
+
+    public void addItemToCart() {
+
     }
 }

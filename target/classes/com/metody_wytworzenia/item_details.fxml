@@ -51,7 +51,7 @@
          </children>
       </HBox>
         <Label text="Items in cart:" />
-        <Button fx:id="primaryButton" maxWidth="1.7976931348623157E308" text="Add to cart">
+        <Button fx:id="primaryButton" maxWidth="1.7976931348623157E308" onAction="#addItemToCart" text="Add to cart">
          <opaqueInsets>
             <Insets left="20.0" right="20.0" />
          </opaqueInsets>
