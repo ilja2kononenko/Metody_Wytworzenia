@@ -1,8 +1,17 @@
 package com.metody_wytworzenia.Controllers;
 
+import com.metody_wytworzenia.Main;
 import com.metody_wytworzenia.Models.Item;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public class ItemController {
     @FXML
@@ -12,7 +21,7 @@ public class ItemController {
     private Label priceLabel;
 
     @FXML
-    //private ImageView image;
+    private ImageView image;
 
     private Item item;
 
@@ -20,7 +29,21 @@ public class ItemController {
         this.item = item;
         nameLabel.setText(item.getName());
         priceLabel.setText(Double.toString(item.getPrice()));
-        //Image imageFromDirectory = new Image(getClass().getResourceAsStream(item.getImageSource()));
-        //image.setImage(imageFromDirectory);
+//        Image imageFromDirectory = new Image(getClass().getResourceAsStream(item.getImageSource()));
+//        image.setImage(imageFromDirectory);
+    }
+
+    @FXML
+    public void prepareItemStage() throws IOException {
+        System.out.println(this.item.getPrice());
+        Stage stage = new Stage(StageStyle.DECORATED);
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("item_details.fxml"));
+        Parent root = loader.load();
+        stage.setScene(new Scene(root, 800, 550));
+        ItemDetailsController controller2 = loader.getController();
+        controller2.setItemDetails(item);
+        stage.setTitle("Item information");
+        stage.setResizable(false);//block windows resize
+        stage.show();
     }
 }

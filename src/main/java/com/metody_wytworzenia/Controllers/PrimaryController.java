@@ -2,6 +2,7 @@ package com.metody_wytworzenia.Controllers;
 
 import com.metody_wytworzenia.Main;
 import com.metody_wytworzenia.Models.Item;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -35,8 +37,8 @@ public class PrimaryController extends Parent implements Initializable {
     @FXML
     private VBox chosenItemCard;
 
-//    @FXML
-//    private ImageView itemImage;
+    @FXML
+    private ImageView itemImage;
 
     @FXML
     private ScrollPane scroll;
@@ -55,7 +57,7 @@ public class PrimaryController extends Parent implements Initializable {
         for (int i = 0; i < 20; i++) {
             item = new Item();
             item.setName("iPhone");
-            item.setPrice(5000.23);
+            item.setPrice(i);
             //item.setImageSource("@../../cart.png");
             items.add(item);
         }
@@ -77,7 +79,7 @@ public class PrimaryController extends Parent implements Initializable {
                 ItemController itemController = fxmlLoader.getController();
                 itemController.setData(item);
 
-                if (column == 2) {
+                if (column == 3) {
                     column = 0;
                     row++;
                 }
@@ -91,17 +93,22 @@ public class PrimaryController extends Parent implements Initializable {
     }
 
     @FXML
-    private void prepareDeliveryStage() throws IOException {
-//        stage = new Stage(StageStyle.DECORATED);
-//        Parent root = FXMLLoader.load(Main.class.getResource("delivery.fxml"));
-//        stage.setScene(new Scene(root, 800, 550));
-//        stage.setTitle("Delivery");
-//        stage.setResizable(false);//block windows resize
-//        stage.show();
-        Main.setRoot("delivery");
+    public void prepareDeliveryStage() throws IOException {
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(Main.class.getResource("delivery.fxml"));
+        stage.setScene(new Scene(root, 800, 550));
+        stage.setTitle("Delivery");
+        stage.setResizable(false);//block windows resize
+        stage.show();
     }
 
+    @FXML
     public void prepareAccountStage() throws IOException{
-
+        Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = FXMLLoader.load(Main.class.getResource("account.fxml"));
+        stage.setScene(new Scene(root, 800, 550));
+        stage.setTitle("Account");
+        stage.setResizable(false);//block windows resize
+        stage.show();
     }
 }
