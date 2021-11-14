@@ -35,7 +35,6 @@ public class ItemController {
 
     @FXML
     public void prepareItemStage() throws IOException {
-        System.out.println(this.item.getPrice());
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("item_details.fxml"));
         Parent root = loader.load();

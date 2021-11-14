@@ -11,6 +11,7 @@ public class ItemDetailsController implements Initializable {
 
     @FXML
     private Label itemPrice;
+
     private Item item;
 
     @Override
