@@ -58,6 +58,7 @@ public class PrimaryController extends Parent implements Initializable {
             item = new Item();
             item.setName("iPhone");
             item.setPrice(i);
+            item.setDescription("Rozmawiaj ze znajomymi, ściągaj aplikacje lub gry i ciesz się z możliwości oferowanych przez Xiaomi POCO X3 PRO NFC 8/256GB niebieski. Długo godzinna praca smartfona jest zagwarantowana przez baterię o wielkości 5160 mAh. Korzystaj, a gdy wskaźnik będzie bliżej zera, wtedy możesz wykorzystać funkcję szybkiego ładowania o mocy 33 W."+i);
             //item.setImageSource("@../../cart.png");
             items.add(item);
         }
@@ -93,7 +94,7 @@ public class PrimaryController extends Parent implements Initializable {
     }
 
     @FXML
-    public void prepareDeliveryStage() throws IOException {
+    public void prepareCartStage() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
         Parent root = FXMLLoader.load(Main.class.getResource("delivery.fxml"));
         stage.setScene(new Scene(root, 800, 550));
