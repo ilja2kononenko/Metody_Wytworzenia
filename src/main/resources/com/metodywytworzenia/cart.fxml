@@ -22,7 +22,7 @@
                   </GridPane>
                </content></ScrollPane>
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <Button fx:id="orderButton" layoutX="20.0" layoutY="44.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="Order" />
+            <Button fx:id="orderButton" onAction="#redirection" layoutX="20.0" layoutY="44.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="180.0" text="BUY" />
             <Label fx:id="cartDetails" layoutX="214.0" layoutY="44.0" prefHeight="45.0" prefWidth="567.0" text="Details" />
          </children></AnchorPane>
    </children>

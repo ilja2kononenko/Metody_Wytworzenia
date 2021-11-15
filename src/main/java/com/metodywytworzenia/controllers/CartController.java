@@ -2,6 +2,7 @@ package com.metodywytworzenia.controllers;
 
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -65,5 +66,9 @@ public class CartController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void redirection() {
+
     }
 }

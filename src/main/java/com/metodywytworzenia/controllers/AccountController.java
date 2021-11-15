@@ -44,10 +44,10 @@ public class AccountController implements Initializable {
         //TODO
         //handle login to database??
         if(!userEmail.getText().equals("") && !userPassword.getText().equals("")) {
-            successCommunicate();
+            successfulCommunicate();
             windowClose();
         } else {
-            unsuccessCommunicate();
+            unsuccessfulCommunicate();
         }
     }
 
@@ -66,11 +66,11 @@ public class AccountController implements Initializable {
             !userName.getText().equals("") && !userSurname.getText().equals("") && !userPhone.getText().equals("")) {
             windowClose();
         } else {
-            unsuccessCommunicate();
+            unsuccessfulCommunicate();
         }
     }
 
-    private void successCommunicate() {
+    private void successfulCommunicate() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Message Here...");
         alert.setHeaderText("Look, an Information Dialog");
@@ -82,7 +82,7 @@ public class AccountController implements Initializable {
         });
     }
 
-    private void unsuccessCommunicate() {
+    private void unsuccessfulCommunicate() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Message Here...");
         alert.setHeaderText("Look, an Information Dialog");
