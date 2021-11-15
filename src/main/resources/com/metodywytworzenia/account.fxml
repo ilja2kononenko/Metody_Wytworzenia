@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodywytworzenia.controllers.AccountController">
+    <children>
+      <AnchorPane prefHeight="436.0" prefWidth="760.0">
+         <children>
+            <TextField fx:id="userEmail" layoutX="30.0" layoutY="33.0" maxWidth="-Infinity" prefHeight="44.0" prefWidth="706.0" promptText="Email" AnchorPane.bottomAnchor="359.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="33.0" />
+            <TextField fx:id="userPassword" layoutX="30.0" layoutY="113.0" prefHeight="44.0" prefWidth="706.0" promptText="Password" />
+            <TextField fx:id="userName" layoutX="30.0" layoutY="193.0" prefHeight="37.0" prefWidth="706.0" promptText="Name" />
+            <TextField fx:id="userSurname" layoutX="30.0" layoutY="258.0" prefHeight="37.0" prefWidth="706.0" promptText="Surname" />
+            <TextField fx:id="userPhone" layoutX="30.0" layoutY="323.0" prefHeight="44.0" prefWidth="706.0" promptText="Phone Number" />
+            <Button fx:id="continueButton" onAction="#saveUserAccount" layoutX="348.0" layoutY="386.0" mnemonicParsing="false" text="Continue" />
+         </children>
+      </AnchorPane>
+        <ButtonBar prefHeight="44.0" prefWidth="760.0">
+            <buttons>
+                <Button fx:id="loginButton" onAction="#loginToAccount" prefHeight="25.0" prefWidth="493.0" text="Login" ButtonBar.buttonData="LEFT" />
+                <Button fx:id="RegisterButton" onAction="#registerAccount" text="Register" ButtonBar.buttonData="RIGHT" />
+            </buttons>
+        </ButtonBar>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</VBox>

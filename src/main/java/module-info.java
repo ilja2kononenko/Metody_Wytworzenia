@@ -3,8 +3,8 @@ module com.metody_wytworzenia {
     requires javafx.fxml;
 
 
-    opens com.metody_wytworzenia to javafx.fxml;
-    exports com.metody_wytworzenia;
-    exports com.metody_wytworzenia.Controllers;
-    opens com.metody_wytworzenia.Controllers to javafx.fxml;
+    opens com.metodywytworzenia to javafx.fxml;
+    exports com.metodywytworzenia;
+    exports com.metodywytworzenia.controllers;
+    opens com.metodywytworzenia.controllers to javafx.fxml;
 }
