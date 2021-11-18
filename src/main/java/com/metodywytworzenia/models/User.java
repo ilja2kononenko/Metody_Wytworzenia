@@ -1,6 +1,7 @@
 package com.metodywytworzenia.models;
 
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class User extends Model{
@@ -46,7 +47,7 @@ public class User extends Model{
 
         try{
             String sql = "insert into users (name, surname, email, password) values (?, ?, ?, ?);";
-            preparedStatement = getConnection().prepareStatement(sql);
+            preparedStatement = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, user.name);
             preparedStatement.setString(2, user.surname);
@@ -55,8 +56,38 @@ public class User extends Model{
 
             int rowsAffected = preparedStatement.executeUpdate();
 
+            if (rowsAffected == 0) {
+                throw new SQLException("Registration unsuccessful!");
+            }
+
             if (rowsAffected == 1) {
-                return true;
+                resultSet = preparedStatement.getGeneratedKeys();
+
+                if (resultSet.next()) {
+
+                    int user_id = resultSet.getInt(1);
+
+                    System.out.println("User id equals: " + user_id);
+
+                    ArrayList<User> users = getUsers();
+
+                    if (users != null) {
+                        for (User possibleUser : users) {
+                            if (possibleUser.id == user_id) {
+                                User.logIn(possibleUser);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (User.isLogged) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+
             }
 
 
@@ -111,6 +142,22 @@ public class User extends Model{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public static void setIsLogged(boolean isLogged) {
+        User.isLogged = isLogged;
+    }
+
+    public static void setUserInstance(User userInstance) {
+        User.userInstance = userInstance;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void clearCart() {

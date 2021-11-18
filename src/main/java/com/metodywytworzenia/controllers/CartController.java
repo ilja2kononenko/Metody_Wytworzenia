@@ -111,6 +111,11 @@ public class CartController implements Initializable {
                     }
                 });
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Purchase error");
+            alert.setHeaderText("You are not logged in!");
+            alert.setContentText("Please log in or register!");
         }
 
     }
