@@ -11,6 +11,9 @@ public class User extends Model{
     int money;
     String email;
     String password;
+    ArrayList<Item> cartItems;
+    public static User userInstance;
+    public static boolean isLogged = false;
 
     public static ArrayList<User> getUsers() {
         try{
@@ -42,7 +45,6 @@ public class User extends Model{
     public static boolean tryRegister (User user) {
 
         try{
-            ArrayList<User> resultsList = new ArrayList<>();
             String sql = "insert into users (name, surname, email, password) values (?, ?, ?, ?);";
             preparedStatement = getConnection().prepareStatement(sql);
 
@@ -65,6 +67,12 @@ public class User extends Model{
         return false;
     }
 
+    public static void logIn(User user) {
+        userInstance = user;
+        isLogged = true;
+        userInstance.cartItems = new ArrayList<>();
+    }
+
     public String getName() {
         return name;
     }
@@ -79,6 +87,14 @@ public class User extends Model{
 
     public String getPassword() {
         return password;
+    }
+
+    public ArrayList<Item> getCartItems() {
+        return cartItems;
+    }
+
+    public void addItemToCart (Item item) {
+        cartItems.add(item);
     }
 
     public void setName(String name) {

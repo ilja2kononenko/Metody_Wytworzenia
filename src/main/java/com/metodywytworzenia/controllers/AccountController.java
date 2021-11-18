@@ -52,6 +52,7 @@ public class AccountController implements Initializable {
             for (User user : users) {
                 if (userEmail.getText().equals(user.getEmail()) && userPassword.getText().equals(user.getPassword())) {
                     loginSuccessful = true;
+                    User.logIn(user);
                     break;
                 }
             }
@@ -60,12 +61,10 @@ public class AccountController implements Initializable {
         // decision making depending on whether data for login is correct
 
         if(loginSuccessful) {
-            System.out.println("Login successful");
-            successfulCommunicate();
+            successfulCommunicate("Login successful!", "You successfully logged in!", "Now you can make purchases!");
             windowClose();
         } else {
-            System.out.println("Error! Login unsuccessful!");
-            unsuccessfulCommunicate();
+            unsuccessfulCommunicate("Error! Login was not successful!", "Something went wrong!", "Please check if all fields are okay and try again!");
         }
     }
 
@@ -86,31 +85,30 @@ public class AccountController implements Initializable {
         user.setPassword(userPassword.getText());
 
         if(User.tryRegister(user)) {
-            System.out.println("Register successful!");
+            successfulCommunicate("Register successful!", "Your account was successfully created!", "Now you can make purchases!");
             windowClose();
         } else {
-            System.out.println("Error! Register unsuccessful!");
-            unsuccessfulCommunicate();
+            unsuccessfulCommunicate("Error! Registration was not successful!", "Something went wrong!", "Please check if all fields are okay and try again!");
         }
     }
 
-    private void successfulCommunicate() {
+    private void successfulCommunicate(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Message Here...");
-        alert.setHeaderText("Look, an Information Dialog");
-        alert.setContentText("I have a great message for you!");
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
         alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
-                System.out.println("Pressed OK.");
+                windowClose();
             }
         });
     }
 
-    private void unsuccessfulCommunicate() {
+    private void unsuccessfulCommunicate(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Message Here...");
-        alert.setHeaderText("Look, an Information Dialog");
-        alert.setContentText("I have a great message for you!");
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
         alert.showAndWait().ifPresent(rs -> {
             if (rs == ButtonType.OK) {
                 System.out.println("Pressed OK.");

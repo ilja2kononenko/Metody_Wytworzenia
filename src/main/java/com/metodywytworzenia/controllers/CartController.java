@@ -2,6 +2,7 @@ package com.metodywytworzenia.controllers;
 
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
+import com.metodywytworzenia.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,43 +27,49 @@ public class CartController implements Initializable {
     public CartController() {
     }
 
-    private List<Item> getData() {
-        List<Item> items = new ArrayList<>();
-        Item item;
-        for (int i = 0; i < 5; i++) {
-            item = new Item();
-            item.setName("iPhone");
-            item.setPrice(i);
-            item.setDescription("Rozmawiaj ze znajomymi, ściągaj aplikacje lub gry i ciesz się z możliwości oferowanych przez Xiaomi POCO X3 PRO NFC 8/256GB niebieski. Długo godzinna praca smartfona jest zagwarantowana przez baterię o wielkości 5160 mAh. Korzystaj, a gdy wskaźnik będzie bliżej zera, wtedy możesz wykorzystać funkcję szybkiego ładowania o mocy 33 W."+i);
-            //item.setImageSource("@../../cart.png");
-            items.add(item);
+    private ArrayList<Item> getData() {
+        if (User.isLogged) {
+
+            ArrayList<Item> itemsInCart = User.userInstance.getCartItems();
+
+            for (Item item : itemsInCart) {
+                item.setDescription("Rozmawiaj ze znajomymi, ściągaj aplikacje lub gry i ciesz się z możliwości oferowanych przez Xiaomi POCO X3 PRO NFC 8/256GB niebieski. Długo godzinna praca smartfona jest zagwarantowana przez baterię o wielkości 5160 mAh. Korzystaj, a gdy wskaźnik będzie bliżej zera, wtedy możesz wykorzystać funkcję szybkiego ładowania o mocy 33 W.");
+                //item.setImageSource("@../../cart.png");
+                //items.add(item);
+            }
+            return itemsInCart;
+        } else {
+            return null;
         }
-        return items;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        items.addAll(getData());
+        ArrayList<Item> items = getData();
+
         int column = 0;
         int row = 0;
         try {
-            for (Item item : items) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
+            if (items != null) {
+                for (Item item : items) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
 
-                AnchorPane anchorPane = fxmlLoader.load();
+                    AnchorPane anchorPane = fxmlLoader.load();
 
-                ItemController itemController = fxmlLoader.getController();
-                itemController.setData(item);
+                    ItemController itemController = fxmlLoader.getController();
+                    itemController.setData(item);
 
-                if (column == 3) {
-                    column = 0;
-                    row++;
+                    if (column == 3) {
+                        column = 0;
+                        row++;
+                    }
+
+                    grid.add(anchorPane, column++, row); //child, obviously column and row
+                    GridPane.setMargin(anchorPane, new Insets(10));
                 }
-
-                grid.add(anchorPane, column++, row); //child, obviously column and row
-                GridPane.setMargin(anchorPane, new Insets(10));
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
