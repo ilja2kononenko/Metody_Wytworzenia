@@ -1,12 +1,14 @@
 package com.metodywytworzenia.controllers;
 
 import com.metodywytworzenia.models.Backend_User;
+import com.metodywytworzenia.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AccountController implements Initializable {
@@ -42,27 +44,27 @@ public class AccountController implements Initializable {
     }
 
     public void loginToAccount() {
+
+        ArrayList<User> users = User.getUsers();
         boolean loginSuccessful = false;
-        String[] AdminData = Backend_User.getAdminData();
 
-        if (AdminData != null) {
-            String login = AdminData[0];
-            String password = AdminData[1];
-
-            System.out.println(userEmail.getText() + " " + userPassword.getText());
-            System.out.println(login + " " + password);
-
-            if (userEmail.getText().equals(login) && userPassword.getText().equals(password)) {
-                loginSuccessful = true;
+        if (users != null) {
+            for (User user : users) {
+                if (userEmail.getText().equals(user.getEmail()) && userPassword.getText().equals(user.getPassword())) {
+                    loginSuccessful = true;
+                    break;
+                }
             }
         }
 
         // decision making depending on whether data for login is correct
 
         if(loginSuccessful) {
+            System.out.println("Login successful");
             successfulCommunicate();
             windowClose();
         } else {
+            System.out.println("Error! Login unsuccessful!");
             unsuccessfulCommunicate();
         }
     }
@@ -75,13 +77,19 @@ public class AccountController implements Initializable {
     }
 
     public void saveUserAccount() {
-        //TODO
-        //handle save to database
-        //what is the next step??
-        if(!userEmail.getText().equals("") && !userPassword.getText().equals("") &&
-            !userName.getText().equals("") && !userSurname.getText().equals("") && !userPhone.getText().equals("")) {
+
+        User user = new User();
+
+        user.setName(userName.getText());
+        user.setSurname(userSurname.getText());
+        user.setEmail(userEmail.getText());
+        user.setPassword(userPassword.getText());
+
+        if(User.tryRegister(user)) {
+            System.out.println("Register successful!");
             windowClose();
         } else {
+            System.out.println("Error! Register unsuccessful!");
             unsuccessfulCommunicate();
         }
     }
