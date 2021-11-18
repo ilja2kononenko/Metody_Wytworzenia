@@ -1,2 +1,2 @@
 Dev 1.4
-sklep_actions 1
+sklep_actions 2
