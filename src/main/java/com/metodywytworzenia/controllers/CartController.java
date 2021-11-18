@@ -2,14 +2,19 @@ package com.metodywytworzenia.controllers;
 
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
+import com.metodywytworzenia.models.OrderGroup;
 import com.metodywytworzenia.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +28,9 @@ public class CartController implements Initializable {
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private Button orderButton;
 
     public CartController() {
     }
@@ -75,7 +83,40 @@ public class CartController implements Initializable {
         }
     }
 
-    public void redirection() {
+    public void completePurchase(ActionEvent actionEvent) {
 
+        if (User.isLogged) {
+            boolean purchaseSuccessful = OrderGroup.tryCompletePurchase();
+
+            if (purchaseSuccessful) {
+
+                User.userInstance.clearCart();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Purchase successful!");
+                alert.setHeaderText("Thank you for buying our products!");
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                        windowClose();
+                    }
+                });
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Purchase error");
+                alert.setHeaderText("Something went wrong!");
+                alert.setContentText("Please contact a developer!");
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK) {
+                        windowClose();
+                    }
+                });
+            }
+        }
+
+    }
+
+    private void windowClose() {
+        Stage stage = (Stage) orderButton.getScene().getWindow();
+        stage.close();
     }
 }

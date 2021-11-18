@@ -54,6 +54,10 @@ public class Item extends Model{
 
     }
 
+    public int getId() {
+        return id;
+    }
+
     public double getPrice() {
         return price;
     }

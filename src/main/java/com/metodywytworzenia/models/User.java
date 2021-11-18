@@ -112,4 +112,8 @@ public class User extends Model{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void clearCart() {
+        userInstance.cartItems = new ArrayList<>();
+    }
 }
