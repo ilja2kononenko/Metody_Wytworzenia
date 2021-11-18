@@ -1,5 +1,6 @@
 package com.metodywytworzenia.controllers;
 
+import com.metodywytworzenia.models.Backend_User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -41,9 +42,24 @@ public class AccountController implements Initializable {
     }
 
     public void loginToAccount() {
-        //TODO
-        //handle login to database??
-        if(!userEmail.getText().equals("") && !userPassword.getText().equals("")) {
+        boolean loginSuccessful = false;
+        String[] AdminData = Backend_User.getAdminData();
+
+        if (AdminData != null) {
+            String login = AdminData[0];
+            String password = AdminData[1];
+
+            System.out.println(userEmail.getText() + " " + userPassword.getText());
+            System.out.println(login + " " + password);
+
+            if (userEmail.getText().equals(login) && userPassword.getText().equals(password)) {
+                loginSuccessful = true;
+            }
+        }
+
+        // decision making depending on whether data for login is correct
+
+        if(loginSuccessful) {
             successfulCommunicate();
             windowClose();
         } else {

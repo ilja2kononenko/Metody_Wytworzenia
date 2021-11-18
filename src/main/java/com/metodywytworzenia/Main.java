@@ -19,8 +19,6 @@ public class Main extends Application {
 
         // for testing connection and showing how it works
 
-        System.out.println("Test");
-
         connection = Connection_Util.connect_to_DB("root", "");
         String sql = "select * from users;";
 
