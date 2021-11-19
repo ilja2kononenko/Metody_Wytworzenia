@@ -104,6 +104,11 @@ public class User extends Model{
         userInstance.cartItems = new ArrayList<>();
     }
 
+    public static void logOut() {
+        userInstance = null;
+        isLogged = false;
+    }
+
     public String getName() {
         return name;
     }

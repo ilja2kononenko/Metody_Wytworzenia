@@ -62,7 +62,9 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                   </GridPane>
-               </content></ScrollPane>
-         </children></AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </children>
 </GridPane>
