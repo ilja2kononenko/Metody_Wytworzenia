@@ -2,6 +2,7 @@ package com.metodywytworzenia.controllers;
 
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
+import com.metodywytworzenia.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -89,7 +90,7 @@ public class PrimaryController extends Parent implements Initializable {
         Stage stage = new Stage(StageStyle.DECORATED);
         Parent root = FXMLLoader.load(Main.class.getResource("cart.fxml"));
         stage.setScene(new Scene(root, 800, 550));
-        stage.setTitle("Delivery");
+        stage.setTitle("Cart");
         stage.setResizable(false);//block windows resize
         stage.show();
     }
@@ -97,7 +98,15 @@ public class PrimaryController extends Parent implements Initializable {
     @FXML
     public void prepareAccountStage() throws IOException{
         Stage stage = new Stage(StageStyle.DECORATED);
-        Parent root = FXMLLoader.load(Main.class.getResource("account.fxml"));
+
+        String fxmlString = "account.fxml";
+
+        if (User.isLogged) {
+            fxmlString = "user_panel.fxml";
+        }
+
+        Parent root = FXMLLoader.load(Main.class.getResource(fxmlString));
+
         stage.setScene(new Scene(root, 800, 550));
         stage.setTitle("Account");
         stage.setResizable(false);//block windows resize

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodywytworzenia.controllers.CartController">
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.metodywytworzenia.controllers.CartController">
    <children>
       <ScrollPane fx:id="scroll" prefHeight="428.0" prefWidth="761.0">
          <content>

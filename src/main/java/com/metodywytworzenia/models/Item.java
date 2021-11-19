@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class Item extends Model{
 
-    private int id;
-    private String name;
-    private String imageSource;
-    private int price;
-    private String description;
+    public int id;
+    public String name;
+    public String imageSource;
+    public int price;
+    public String description;
 
     public String getName() {
         return name;
