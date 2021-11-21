@@ -7,4 +7,9 @@ module com.metody_wytworzenia {
     exports com.metodywytworzenia;
     exports com.metodywytworzenia.controllers;
     opens com.metodywytworzenia.controllers to javafx.fxml;
+
+    opens com.administration to javafx.fxml;
+    exports com.administration;
+    exports com.administration.controllers;
+    opens com.administration.controllers to javafx.fxml;
 }
