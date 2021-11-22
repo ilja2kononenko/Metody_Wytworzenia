@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.administration.controllers.PrimaryController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="81.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="itemsButton" mnemonicParsing="false" onAction="#showItems" prefHeight="25.0" prefWidth="105.0" text="Items">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="usersButton" mnemonicParsing="false" onAction="#showUsers" prefHeight="25.0" prefWidth="105.0" text="Users">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="ordergroupButton" mnemonicParsing="false" onAction="#showOrderGroups" prefHeight="25.0" prefWidth="105.0" text="Ordergroup">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="40.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

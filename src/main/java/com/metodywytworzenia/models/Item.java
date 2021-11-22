@@ -32,6 +32,8 @@ public class Item extends Model{
             try{
                 ArrayList<Item> resultsList = new ArrayList<>();
                 String sql = "select * from products;";
+
+                //TODO why getConnection().prepareStatement(sql) is null??!
                 preparedStatement = getConnection().prepareStatement(sql);
                 resultSet = preparedStatement.executeQuery();
 
