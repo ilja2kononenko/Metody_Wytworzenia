@@ -56,6 +56,35 @@ public class Item extends Model{
 
     }
 
+    public static ArrayList<Item> getAllProductsAdmin() {
+
+        try{
+            ArrayList<Item> resultsList = new ArrayList<>();
+            String sql = "select * from products;";
+
+            //TODO why getConnection().prepareStatement(sql) is null??!
+            preparedStatement = getConnectionAdmin().prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Item item = new Item();
+
+                item.id = resultSet.getInt("id");
+                item.name = resultSet.getString("title");
+                item.price = resultSet.getInt("price");
+                item.description = resultSet.getString("description");
+
+                resultsList.add(item);
+            }
+
+            return resultsList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public int getId() {
         return id;
     }

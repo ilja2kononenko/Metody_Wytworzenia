@@ -3,14 +3,18 @@ package com.administration.controllers;
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.controllers.ItemController;
 import com.metodywytworzenia.models.Item;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +36,7 @@ public class ItemListController extends Parent implements Initializable {
     }
 
     private ArrayList<Item> getData() {
-        items = Item.getAllProducts();
+        items = Item.getAllProductsAdmin();
 
         return items;
     }
@@ -46,8 +50,7 @@ public class ItemListController extends Parent implements Initializable {
             if (items != null) {
                 for (Item item : items) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(Main.class.getResource("/com.metodywytworzenia/item.fxml"));
-
+                    fxmlLoader.setLocation(Main.class.getResource("/com.administration/item.fxml"));
                     AnchorPane anchorPane = fxmlLoader.load();
 
                     ItemController itemController = fxmlLoader.getController();
@@ -65,5 +68,14 @@ public class ItemListController extends Parent implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addItem() throws IOException {
+        Parent root = FXMLLoader.load(Main.class.getResource("/com.administration/item_new.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene(root, 800, 550));
+        stage.setTitle("New item");
+        stage.setResizable(false);//block windows resize
+        stage.show();
     }
 }

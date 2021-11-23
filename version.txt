@@ -1,2 +1,2 @@
-Dev 1.4
-sklep_actions 7 (admin panel)
+Dev 1.5
+sklep_actions 7 (admin panel + add item to db)
