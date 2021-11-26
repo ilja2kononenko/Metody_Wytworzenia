@@ -1,16 +1,13 @@
 package com.administration.controllers;
 
 import com.metodywytworzenia.Main;
-import com.metodywytworzenia.controllers.ItemController;
 import com.metodywytworzenia.models.Item;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -24,9 +21,6 @@ import java.util.ResourceBundle;
 public class ItemListController extends Parent implements Initializable {
 
     @FXML
-    private ScrollPane scroll;
-
-    @FXML
     private GridPane grid;
 
     private ArrayList<Item> items = new ArrayList<>();
@@ -35,10 +29,9 @@ public class ItemListController extends Parent implements Initializable {
 
     }
 
-    private ArrayList<Item> getData() {
+    private void getData() {
         items = Item.getAllProductsAdmin();
 
-        return items;
     }
 
     @Override

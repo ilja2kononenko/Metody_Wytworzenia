@@ -7,7 +7,7 @@ public class Item extends Model{
 
     public int id;
     public String name;
-    public String imageSource;
+    //public String imageSource;
     public int price;
     public String description;
 
@@ -37,16 +37,7 @@ public class Item extends Model{
                 preparedStatement = getConnection().prepareStatement(sql);
                 resultSet = preparedStatement.executeQuery();
 
-                while (resultSet.next()) {
-                    Item item = new Item();
-
-                    item.id = resultSet.getInt("id");
-                    item.name = resultSet.getString("title");
-                    item.price = resultSet.getInt("price");
-                    item.description = resultSet.getString("description");
-
-                    resultsList.add(item);
-                }
+                setItemPanel(resultsList);
 
                 return resultsList;
             } catch (SQLException e) {
@@ -61,21 +52,10 @@ public class Item extends Model{
         try{
             ArrayList<Item> resultsList = new ArrayList<>();
             String sql = "select * from products;";
-
-            //TODO why getConnection().prepareStatement(sql) is null??!
             preparedStatement = getConnectionAdmin().prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
-                Item item = new Item();
-
-                item.id = resultSet.getInt("id");
-                item.name = resultSet.getString("title");
-                item.price = resultSet.getInt("price");
-                item.description = resultSet.getString("description");
-
-                resultsList.add(item);
-            }
+            setItemPanel(resultsList);
 
             return resultsList;
         } catch (SQLException e) {
@@ -83,6 +63,19 @@ public class Item extends Model{
         }
         return null;
 
+    }
+
+    private static void setItemPanel(ArrayList<Item> resultsList) throws SQLException {
+        while (resultSet.next()) {
+            Item item = new Item();
+
+            item.id = resultSet.getInt("id");
+            item.name = resultSet.getString("title");
+            item.price = resultSet.getInt("price");
+            item.description = resultSet.getString("description");
+
+            resultsList.add(item);
+        }
     }
 
     public int getId() {

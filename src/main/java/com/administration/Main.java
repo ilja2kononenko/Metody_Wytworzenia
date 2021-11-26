@@ -25,7 +25,7 @@ public class Main extends Application {
         String sql = "select * from users;";
 
         try {
-            PreparedStatement stmt = null;
+            PreparedStatement stmt ;
             if (connection != null) {
                 stmt = connection.prepareStatement(sql);
                 ResultSet resultSet = stmt.executeQuery();
@@ -45,10 +45,6 @@ public class Main extends Application {
         stage.setResizable(false);//block windows resize
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
     }
 
     public static Parent loadFXML(String fxml) throws IOException {

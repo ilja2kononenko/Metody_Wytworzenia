@@ -8,7 +8,6 @@ public class Backend_User extends Model{
 
     public static String[] getAdminData() {
         try{
-            ArrayList<String> resultsList = new ArrayList<>();
             String sql = "select * from backend_users;";
             preparedStatement = getConnection().prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
