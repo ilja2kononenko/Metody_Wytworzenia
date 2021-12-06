@@ -13,4 +13,6 @@ module com.metody_wytworzenia {
     exports com.administration;
     exports com.administration.controllers;
     opens com.administration.controllers to javafx.fxml;
+    exports com.administration.controllers.lists;
+    opens com.administration.controllers.lists to javafx.fxml;
 }

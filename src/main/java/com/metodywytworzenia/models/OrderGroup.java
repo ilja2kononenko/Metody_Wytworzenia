@@ -1,5 +1,6 @@
 package com.metodywytworzenia.models;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -10,6 +11,38 @@ public class OrderGroup extends Model{
     int id;
     int user_id;
     Date creation_date;
+
+    public static ArrayList<OrderGroup> getAllOrderGroups () {
+
+        try{
+            ArrayList<OrderGroup> resultsList = new ArrayList<>();
+            String sql = "select * from ordergroup;";
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                OrderGroup orderGroup = new OrderGroup();
+
+                orderGroup.id = resultSet.getInt("id");
+                orderGroup.user_id = resultSet.getInt("user_id");
+                //orderGroup.creation_date = resultSet.getString("surname");
+
+                resultsList.add(orderGroup);
+            }
+
+            return resultsList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 
     public static boolean tryCompletePurchase () {
 
@@ -66,4 +99,27 @@ public class OrderGroup extends Model{
         return false;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public Date getCreation_date() {
+        return creation_date;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCreation_date(Date creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 }

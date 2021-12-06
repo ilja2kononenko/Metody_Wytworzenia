@@ -1,5 +1,6 @@
 package com.metodywytworzenia.models;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -20,7 +21,13 @@ public class User extends Model{
         try{
             ArrayList<User> resultsList = new ArrayList<>();
             String sql = "select * from users;";
-            preparedStatement = getConnection().prepareStatement(sql);
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+            preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -109,8 +116,48 @@ public class User extends Model{
         isLogged = false;
     }
 
+    public static User getUserById(int id) {
+        try{
+            String sql = "select * from users where id=?;";
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+
+                user.id = resultSet.getInt("id");
+                user.name = resultSet.getString("name");
+                user.surname = resultSet.getString("surname");
+                user.money = resultSet.getInt("money");
+                user.email = resultSet.getString("email");
+                user.password = resultSet.getString("password");
+
+                return user;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     public String getSurname() {

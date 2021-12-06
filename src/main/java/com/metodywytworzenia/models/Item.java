@@ -1,5 +1,6 @@
 package com.metodywytworzenia.models;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,6 +11,30 @@ public class Item extends Model{
     //public String imageSource;
     public int price;
     public String description;
+
+    public static ArrayList<Item> getProductsByOrderGroupId(int id) {
+        try{
+            ArrayList<Item> resultsList = new ArrayList<>();
+            String sql = "select * from products where id=?;";
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            setItemPanel(resultsList);
+
+            return resultsList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public String getName() {
         return name;
@@ -33,7 +58,6 @@ public class Item extends Model{
                 ArrayList<Item> resultsList = new ArrayList<>();
                 String sql = "select * from products;";
 
-                //TODO why getConnection().prepareStatement(sql) is null??!
                 preparedStatement = getConnection().prepareStatement(sql);
                 resultSet = preparedStatement.executeQuery();
 

@@ -1,5 +1,6 @@
-package com.administration.controllers;
+package com.administration.controllers.lists;
 
+import com.administration.controllers.ItemController;
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
 import javafx.fxml.FXML;

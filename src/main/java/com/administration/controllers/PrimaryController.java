@@ -27,7 +27,12 @@ public class PrimaryController {
         stage.show();
     }
 
-    public void showOrderGroups() {
-
+    public void showOrderGroups() throws IOException{
+        Parent root = com.administration.Main.loadFXML("orderGroups_list");
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene(root, 800, 550));
+        stage.setTitle("Users");
+        stage.setResizable(false);//block windows resize
+        stage.show();
     }
 }
