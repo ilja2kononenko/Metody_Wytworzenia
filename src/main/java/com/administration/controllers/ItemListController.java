@@ -43,7 +43,7 @@ public class ItemListController extends Parent implements Initializable {
             if (items != null) {
                 for (Item item : items) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(Main.class.getResource("/com.administration/item.fxml"));
+                    fxmlLoader.setLocation(Main.class.getResource("/administration/item.fxml"));
                     AnchorPane anchorPane = fxmlLoader.load();
 
                     ItemController itemController = fxmlLoader.getController();
@@ -64,7 +64,7 @@ public class ItemListController extends Parent implements Initializable {
     }
 
     public void addItem() throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource("/com.administration/item_new.fxml"));
+        Parent root = FXMLLoader.load(Main.class.getResource("/administration/item_new.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setScene(new Scene(root, 800, 550));
         stage.setTitle("New item");

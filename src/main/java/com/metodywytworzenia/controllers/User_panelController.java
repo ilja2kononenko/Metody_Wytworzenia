@@ -55,7 +55,7 @@ public class User_panelController extends Parent implements Initializable {
                 for (Item item : items) {
                     System.out.println(item.name);
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
+                    fxmlLoader.setLocation(Main.class.getResource("/metodywytworzenia/item.fxml"));
 
                     AnchorPane anchorPane = fxmlLoader.load();
 

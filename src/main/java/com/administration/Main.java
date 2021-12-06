@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        connection = Connection_Util.connect_to_DB("admin", "admin");
+        connection = Connection_Util.connect_to_DB("root", "");
         String sql = "select * from users;";
 
         try {
@@ -48,7 +48,7 @@ public class Main extends Application {
     }
 
     public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com.administration/" + fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/administration/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

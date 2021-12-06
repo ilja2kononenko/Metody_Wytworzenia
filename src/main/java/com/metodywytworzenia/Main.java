@@ -40,7 +40,7 @@ public class Main extends Application {
 
         // end of demo of Database connection
 
-        scene = new Scene(loadFXML("primary"), 800, 550);
+        scene = new Scene(loadFXML("/metodywytworzenia/primary"), 800, 550);
         stage.setTitle("Prodsell");
         stage.setResizable(false);//block windows resize
         stage.setScene(scene);

@@ -36,7 +36,7 @@ public class ItemController {
     @FXML
     public void prepareItemStage() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("item_details.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/metodywytworzenia/item_details.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root, 800, 550));
         ItemDetailsController controller = loader.getController();

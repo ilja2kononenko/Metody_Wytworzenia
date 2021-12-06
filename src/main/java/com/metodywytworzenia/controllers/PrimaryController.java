@@ -64,7 +64,7 @@ public class PrimaryController extends Parent implements Initializable {
             if (items != null) {
                 for (Item item : items) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
+                    fxmlLoader.setLocation(Main.class.getResource("/metodywytworzenia/item.fxml"));
 
                     AnchorPane anchorPane = fxmlLoader.load();
 
@@ -88,7 +88,7 @@ public class PrimaryController extends Parent implements Initializable {
     @FXML
     public void prepareCartStage() throws IOException {
         Stage stage = new Stage(StageStyle.DECORATED);
-        Parent root = FXMLLoader.load(Main.class.getResource("cart.fxml"));
+        Parent root = FXMLLoader.load(Main.class.getResource("/metodywytworzenia/cart.fxml"));
         stage.setScene(new Scene(root, 800, 550));
         stage.setTitle("Cart");
         stage.setResizable(false);//block windows resize
@@ -99,10 +99,10 @@ public class PrimaryController extends Parent implements Initializable {
     public void prepareAccountStage() throws IOException{
         Stage stage = new Stage(StageStyle.DECORATED);
 
-        String fxmlString = "account.fxml";
+        String fxmlString = "/metodywytworzenia/account.fxml";
 
         if (User.isLogged) {
-            fxmlString = "user_panel.fxml";
+            fxmlString = "/metodywytworzenia/user_panel.fxml";
         }
 
         Parent root = FXMLLoader.load(Main.class.getResource(fxmlString));

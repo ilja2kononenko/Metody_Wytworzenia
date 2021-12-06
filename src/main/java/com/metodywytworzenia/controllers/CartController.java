@@ -61,7 +61,7 @@ public class CartController implements Initializable {
             if (items != null) {
                 for (Item item : items) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(Main.class.getResource("item.fxml"));
+                    fxmlLoader.setLocation(Main.class.getResource("/metodywytworzenia/item.fxml"));
 
                     AnchorPane anchorPane = fxmlLoader.load();
 
