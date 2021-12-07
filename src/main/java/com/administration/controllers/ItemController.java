@@ -36,12 +36,14 @@ public class ItemController {
 
     @FXML
     public void prepareItemStage() throws IOException {
+        Stage stageToUpdate = (Stage) nameLabel.getScene().getWindow();
         Stage stage = new Stage(StageStyle.DECORATED);
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/administration/change_item.fxml"));
         Parent root = loader.load();
         stage.setScene(new Scene(root, 800, 550));
         ChangeItemController controller = loader.getController();
         controller.setItemDetails(item);
+        controller.setStageToUpdate(stageToUpdate);
         stage.setTitle("Item information");
         stage.setResizable(false);//block windows resize
         stage.show();

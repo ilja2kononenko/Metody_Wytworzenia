@@ -57,7 +57,7 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="560.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="443.0" layoutY="29.0" mnemonicParsing="false" onAction="#submit_changes" text="Submit Changes" />
+            <Button fx:id="submitButton" layoutX="443.0" layoutY="29.0" mnemonicParsing="false" onAction="#submit_changes" text="Submit Changes" />
          </children>
       </AnchorPane>
    </bottom>

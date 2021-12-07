@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="MySQL - mwo_sellprod@localhost">
-  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.19">
+  <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.23">
     <root id="1">
       <ServerVersion>10.4.21</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -1033,29 +1033,18 @@
     </collation>
     <user id="330" parent="1" name="admin">
       <Host>%</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-ALL PRIVILEGES|mwo_sellprod:null
-</ObjectGrants>
     </user>
     <user id="331" parent="1" name="pma">
       <Host>localhost</Host>
-      <ObjectGrants>SELECT,INSERT,UPDATE,DELETE|phpmyadmin:null
-</ObjectGrants>
     </user>
     <user id="332" parent="1" name="root">
       <Host>127.0.0.1</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <user id="333" parent="1" name="root">
       <Host>::1</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <user id="334" parent="1" name="root">
       <Host>localhost</Host>
-      <ObjectGrants>ALL PRIVILEGES!
-</ObjectGrants>
     </user>
     <table id="335" parent="3" name="backend_users"/>
     <table id="336" parent="3" name="order_item"/>

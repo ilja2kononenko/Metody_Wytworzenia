@@ -1,6 +1,7 @@
 package com.administration.controllers.lists;
 
 import com.administration.controllers.ItemController;
+import com.administration.controllers.ItemNewController;
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -23,6 +25,9 @@ public class ItemListController extends Parent implements Initializable {
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private Button addItemButton;
 
     private ArrayList<Item> items = new ArrayList<>();
 
@@ -65,9 +70,13 @@ public class ItemListController extends Parent implements Initializable {
     }
 
     public void addItem() throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource("/administration/item_new.fxml"));
+        Stage stageToUpdate = (Stage) addItemButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/administration/item_new.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
+        Parent root = loader.load();
         stage.setScene(new Scene(root, 800, 550));
+        ItemNewController controller = loader.getController();
+        controller.setStageToUpdate(stageToUpdate);
         stage.setTitle("New item");
         stage.setResizable(false);//block windows resize
         stage.show();
