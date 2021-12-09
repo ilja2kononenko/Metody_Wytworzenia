@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.administration.controllers.UserNewController">
+    <children>
+        <VBox layoutX="21.0" layoutY="14.0" prefHeight="348.0" prefWidth="557.0">
+            <children>
+                <TextField fx:id="userName" promptText="Name of user" />
+                <TextField fx:id="userSurname" promptText="Surname of user" />
+                <TextField fx:id="userEmial" promptText="Email of user" />
+                <Button fx:id="addButton" mnemonicParsing="false" onAction="#addToDB" text="ADD" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

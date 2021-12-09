@@ -69,6 +69,7 @@ public class ItemListController extends Parent implements Initializable {
         }
     }
 
+
     public void addItem() throws IOException {
         Stage stageToUpdate = (Stage) addItemButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/administration/item_new.fxml"));
