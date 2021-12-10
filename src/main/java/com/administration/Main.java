@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        connection = Connection_Util.connect_to_DB("root", "1234");
+        connection = Connection_Util.connect_to_DB("root", "");
         String sql = "select * from users;";
 
         try {

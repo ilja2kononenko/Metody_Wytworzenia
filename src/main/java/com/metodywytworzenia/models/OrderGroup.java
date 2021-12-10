@@ -11,6 +11,8 @@ public class OrderGroup extends Model{
     int id;
     int user_id;
     Date creation_date;
+    double order_PriceSum;
+    User customer;
 
     public static ArrayList<OrderGroup> getAllOrderGroups () {
 
@@ -121,5 +123,21 @@ public class OrderGroup extends Model{
 
     public void setUser_id(int user_id) {
         this.user_id = user_id;
+    }
+
+    public void setOrder_PriceSum(double order_PriceSum) {
+        this.order_PriceSum = order_PriceSum;
+    }
+
+    public double getOrder_PriceSum() {
+        return order_PriceSum;
+    }
+
+    public User getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(User customer) {
+        this.customer = customer;
     }
 }

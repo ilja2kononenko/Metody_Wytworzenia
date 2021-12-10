@@ -45,7 +45,7 @@
                         </Label>
                         <ImageView id="account" fx:id="account" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../account.png" />
+                              <Image url="@../../phone_image-1.png" />
                            </image>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

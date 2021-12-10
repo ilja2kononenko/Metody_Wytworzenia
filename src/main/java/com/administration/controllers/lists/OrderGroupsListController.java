@@ -1,5 +1,7 @@
 package com.administration.controllers.lists;
 
+import com.administration.controllers.ChangeItemController;
+import com.administration.controllers.ChangeOrderGroupController;
 import com.administration.controllers.ItemController;
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
@@ -9,8 +11,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -49,20 +53,29 @@ public class OrderGroupsListController extends Parent implements Initializable {
 
                 ArrayList<Item> products = Item.getProductsByOrderGroupId(orderGroup.getId());
 
-                double sum = 0;
+                if (products != null) {
+                    double sum = 0;
 
-                for (Item item : products) {
-                    sum += item.getPrice();
+                    for (Item item : products) {
+                        sum += item.getPrice();
+                    }
+
+                    orderGroup.setOrder_PriceSum(sum);
+                    orderGroup.setCustomer(user);
+
+                    Button see_details = new Button("Details");
+                    see_details.setOnAction(e -> seeOrderGroupDetails(orderGroup));
+
+                    grid.addRow(row,
+                            new Label(orderGroup.getId() + ""),
+                            new Label(user.getName() + " " + user.getSurname() + ""),
+                            new Label(user.getEmail() + ""),
+                            new Label(sum + ""),
+                            see_details
+                    );
+
+                    row++;
                 }
-
-                grid.addRow(row,
-                        new Label(orderGroup.getId() + ""),
-                        new Label(user.getName() + " " + user.getSurname() + ""),
-                        new Label(user.getEmail() + ""),
-                        new Label(sum + "")
-                );
-
-                row++;
             }
         }
     }
@@ -74,5 +87,24 @@ public class OrderGroupsListController extends Parent implements Initializable {
         stage.setTitle("New item");
         stage.setResizable(false);//block windows resize
         stage.show();
+    }
+
+    public void seeOrderGroupDetails (OrderGroup orderGroup) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("/administration/change_orderGroup.fxml"));
+            Parent root = loader.load();
+
+            ChangeOrderGroupController controller = loader.getController();
+            controller.setOrderGroupDetails(orderGroup);
+
+            Stage stage = new Stage(StageStyle.DECORATED);
+            stage.setScene(new Scene(root, 800, 550));
+            stage.setTitle("OrderGroup details");
+            stage.setResizable(false);//block windows resize
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Error! resource not found!");
+        }
+
     }
 }

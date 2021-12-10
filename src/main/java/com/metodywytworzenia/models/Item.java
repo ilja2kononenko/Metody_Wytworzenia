@@ -1,6 +1,7 @@
 package com.metodywytworzenia.models;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,20 +16,51 @@ public class Item extends Model{
     public static ArrayList<Item> getProductsByOrderGroupId(int id) {
         try{
             ArrayList<Item> resultsList = new ArrayList<>();
-            String sql = "select * from products where id=?;";
+            String sql = "select * from order_item where ordergroup_id=?;";
 
             Connection connection = getConnection();
 
             if (connection == null) {
                 connection = getConnectionAdmin();
             }
+
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
 
-            setItemPanel(resultsList);
+            if (resultSet != null) {
 
-            return resultsList;
+                resultsList = new ArrayList<>();
+
+                while (resultSet.next()) {
+
+                    int item_id = resultSet.getInt("item_id");
+
+                    sql = "select * from products where id=?;";
+
+                    preparedStatement = connection.prepareStatement(sql);
+                    preparedStatement.setInt(1, item_id);
+
+                    ResultSet resultSet2 = preparedStatement.executeQuery();
+
+                    while (resultSet2.next()) {
+                        Item item = new Item();
+
+                        item.id = resultSet2.getInt("id");
+                        item.name = resultSet2.getString("title");
+                        item.price = resultSet2.getInt("price");
+                        item.description = resultSet2.getString("description");
+
+                        resultsList.add(item);
+                    }
+                }
+
+                return resultsList;
+            } else {
+                return null;
+            }
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();

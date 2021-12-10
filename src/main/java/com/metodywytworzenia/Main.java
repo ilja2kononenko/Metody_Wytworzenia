@@ -19,7 +19,7 @@ public class Main extends Application {
 
         // for testing connection and showing how it works
 
-        connection = Connection_Util.connect_to_DB("root", "1234");
+        connection = Connection_Util.connect_to_DB("root", "");
         String sql = "select * from users;";
 
         try {
