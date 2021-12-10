@@ -31,7 +31,7 @@ public class PrimaryController {
         Parent root = com.administration.Main.loadFXML("orderGroups_list");
         Stage stage = new Stage(StageStyle.DECORATED);
         stage.setScene(new Scene(root, 800, 550));
-        stage.setTitle("Users");
+        stage.setTitle("Order groups");
         stage.setResizable(false);//block windows resize
         stage.show();
     }

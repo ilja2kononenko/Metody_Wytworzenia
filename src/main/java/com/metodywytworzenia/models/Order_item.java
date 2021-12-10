@@ -1,5 +1,6 @@
 package com.metodywytworzenia.models;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -62,4 +63,66 @@ public class Order_item extends Model{
 
     }
 
+    public static ArrayList<Order_item> getOrdersByOrderGroupId(int id) {
+        try{
+            ArrayList<Order_item> resultsList2 = new ArrayList<>();
+            String sql = "select * from order_item where ordergroup_id=?;";
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+
+            if (resultSet != null) {
+
+                while (resultSet.next()) {
+                    Order_item order_item = new Order_item();
+                    order_item.setId(resultSet.getInt("id"));
+                    order_item.setOrdergroup_id(resultSet.getInt("ordergroup_id"));
+                    order_item.setItem_id(resultSet.getInt("item_id"));
+
+                    resultsList2.add(order_item);
+                }
+
+                return resultsList2;
+            } else {
+                return null;
+            }
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getItem_id() {
+        return item_id;
+    }
+
+    public int getOrdergroup_id() {
+        return ordergroup_id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
+    }
+
+    public void setOrdergroup_id(int ordergroup_id) {
+        this.ordergroup_id = ordergroup_id;
+    }
 }

@@ -77,7 +77,7 @@
    <bottom>
       <AnchorPane prefHeight="55.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="458.0" layoutY="15.0" mnemonicParsing="false" onAction="#removeOrderGroup" text="Remove order Group" />
+            <Button layoutX="458.0" layoutY="15.0" mnemonicParsing="false" fx:id="removeOrderGroupButton" onAction="#removeOrderGroup" text="Remove order Group" />
          </children>
       </AnchorPane>
    </bottom>

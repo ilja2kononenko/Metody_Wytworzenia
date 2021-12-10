@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class OrderGroupsListController extends Parent implements Initializable {
 
+    public Button addItemButton;
     @FXML
     private GridPane grid;
 
@@ -80,22 +81,15 @@ public class OrderGroupsListController extends Parent implements Initializable {
         }
     }
 
-    public void addItem() throws IOException {
-        Parent root = FXMLLoader.load(Main.class.getResource("/administration/item_new.fxml"));
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(new Scene(root, 800, 550));
-        stage.setTitle("New item");
-        stage.setResizable(false);//block windows resize
-        stage.show();
-    }
-
     public void seeOrderGroupDetails (OrderGroup orderGroup) {
         try {
+            Stage stageToUpdate = (Stage) addItemButton.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/administration/change_orderGroup.fxml"));
             Parent root = loader.load();
 
             ChangeOrderGroupController controller = loader.getController();
             controller.setOrderGroupDetails(orderGroup);
+            controller.setStageToUpdate(stageToUpdate);
 
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setScene(new Scene(root, 800, 550));
