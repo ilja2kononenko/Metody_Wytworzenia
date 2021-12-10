@@ -14,6 +14,39 @@ public class OrderGroup extends Model{
     double order_PriceSum;
     User customer;
 
+    public static ArrayList<OrderGroup> getOrderGroupsByUserId (int user_id) {
+
+        try{
+            ArrayList<OrderGroup> resultsList = new ArrayList<>();
+            String sql = "select * from ordergroup where user_id = ?;";
+
+            Connection connection = getConnection();
+
+            if (connection == null) {
+                connection = getConnectionAdmin();
+            }
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user_id);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                OrderGroup orderGroup = new OrderGroup();
+
+                orderGroup.id = resultSet.getInt("id");
+                orderGroup.user_id = resultSet.getInt("user_id");
+                //orderGroup.creation_date = resultSet.getString("surname");
+
+                resultsList.add(orderGroup);
+            }
+
+            return resultsList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
     public static ArrayList<OrderGroup> getAllOrderGroups () {
 
         try{

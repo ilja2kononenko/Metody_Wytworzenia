@@ -3,6 +3,8 @@ package com.metodywytworzenia.controllers;
 import com.metodywytworzenia.Connection_Util;
 import com.metodywytworzenia.Main;
 import com.metodywytworzenia.models.Item;
+import com.metodywytworzenia.models.OrderGroup;
+import com.metodywytworzenia.models.Order_item;
 import com.metodywytworzenia.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,7 +48,14 @@ public class User_panelController extends Parent implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setUserDetails();
-        ArrayList<Item> items = Item.getAllProducts();
+        ArrayList<Item> items = new ArrayList<>();
+
+        ArrayList<OrderGroup> orderGroups = OrderGroup.getOrderGroupsByUserId(User.userInstance.getId());
+
+        for (OrderGroup orderGroup : orderGroups) {
+            items.addAll(Item.getProductsByOrderGroupId(orderGroup.getId()));
+        }
+
 
         int column = 0;
         int row = 0;
